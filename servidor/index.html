@@ -44,5 +44,57 @@ function ejemploAvisos(){
 
 }
 
+function sumar(a,b,c) {
+  console.log("sumar ",a+b+c);
+  return a+b;
+}
 
+let nuemros1 = [1,2,3];
+sumar(...nuemros1);
+
+
+ let colores1 = ["azul", "rojo", "verde"]; 
+ let colores2 = colores1; // NO ES UNA COPIA 
+ let colores3 = [...colores1]; // COPIA NUEVA 
+ let colores4 = ["cian", ...colores1, "rosa"]; colores2[0] = "amarill o"; 
+console.log(colores1[0]); // amarillo console.log(colores2[0]); // amarillo 
+console.log(colores3[0]); // azul console.log(colores4.length); // 5 
+console.log(colores4); // [ 'cian', 'azul', 'rojo', 'verde', 'rosa' ] 
+
+ function crearContador() { 
+  let cuenta = 0; 
+  return function() { 
+    return cuenta++; } 
+  } 
+  let contador1 = crearContador(); 
+  console.log(contador1()); // 0 
+  console.log(contador1()); // 1 
+  console.log(contador1()); // 2 
+  let contador2 = crearContador(); 
+  console.log(contador2()); // 0 
+  console.log(contador2()); // 1 
+
+  let coche = {
+  color: "rojo",
+  marca: "seat",
+  arrancar: function() {
+    console.log("Arrancando");
+    console.log(color);   // rojo
+    console.log(marca);   // seat
+  }
+};
+
+// Llamamos a la función
+coche.arrancar(); // Arrancando
+
+// Añadimos nuevas propiedades
+coche.modelo = "ibiza";
+coche["combustible"] = "diesel";
+
+// Recorremos las propiedades del objeto
+for (let prop in coche) {
+  console.log(prop);
+}
+
+// ...resto
 </script>
