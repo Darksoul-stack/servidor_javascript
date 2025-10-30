@@ -5,7 +5,7 @@ import path from 'path';
 import * as sesion2 from './sesion2/sesion2.js';
 import * as ejemplos from './ejemplos.js';
 import * as ejemplos2 from './ejemplos2.js';
-//import { pintarCoches } from './sesion2/electrico.js'; 
+import { pintarCoches } from './sesion2/electrico.js'; 
 import { fileURLToPath } from 'url'; 
 // const path = require('path');
 // const sesion2 = require('./sesion2/sesion2');

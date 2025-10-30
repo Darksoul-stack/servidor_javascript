@@ -1,25 +1,23 @@
-function ejemplo() {
-    let edad = 45; // El usuario introduce 
-    let edadMasDiez = edad + 10; 
-    console.log(edadMasDiez); // "4010" en lugar de 50
+// ejemplos.js
+
+export function ejemplo() {
+    let edad = 45; // Número
+    let edadMasDiez = edad + 10;
+    console.log("Edad + 10 =", edadMasDiez); // → 55
     return edadMasDiez;
 }
 
-// Fichero miLibreria.js
-
-function saludar(usuario) {
-  console.log(`Hola, ${usuario}`);
+export function saludar(usuario) {
+    console.log(`Hola, ${usuario}`);
 }
 
 function secreto() {
-  console.log("Ssssshh... es un secreto...");
+    console.log("Ssssshh... es un secreto...");
 }
 
-function despedir(usuario) {
-  secreto();
-  console.log(`Adiós, ${usuario}`);
+export function despedir(usuario) {
+    secreto();
+    console.log(`Adiós, ${usuario}`);
 }
 
-// Solo exportamos las funciones que queremos que sean públicas
-export { saludar, despedir };
-module.exports = {ejemplo};
+// SOLO USA export → NADA DE module.exports
