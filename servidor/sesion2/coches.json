@@ -1,0 +1,22 @@
+[
+  { "marca": "Tesla", "modelo": "Model S", "anio": 2024, "autonomia": 652.5, "electrico": true },
+  { "marca": "Ford", "modelo": "Mustang Mach-E", "anio": 2023, "autonomia": 491.3, "electrico": true },
+  { "marca": "Toyota", "modelo": "Corolla", "anio": 2022, "autonomia": 780.4, "electrico": false },
+  { "marca": "Nissan", "modelo": "Leaf", "anio": 2021, "autonomia": 270.2, "electrico": true },
+  { "marca": "BMW", "modelo": "i3", "anio": 2020, "autonomia": 310.8, "electrico": true },
+  { "marca": "Audi", "modelo": "e-tron", "anio": 2023, "autonomia": 436.9, "electrico": true },
+  { "marca": "Hyundai", "modelo": "Kona Electric", "anio": 2022, "autonomia": 484.1, "electrico": true },
+  { "marca": "Chevrolet", "modelo": "Bolt EV", "anio": 2023, "autonomia": 416.7, "electrico": true },
+  { "marca": "Volkswagen", "modelo": "ID.4", "anio": 2023, "autonomia": 520.3, "electrico": true },
+  { "marca": "Kia", "modelo": "EV6", "anio": 2024, "autonomia": 505.9, "electrico": true },
+  { "marca": "Peugeot", "modelo": "208", "anio": 2022, "autonomia": 680.0, "electrico": false },
+  { "marca": "Renault", "modelo": "Zoe", "anio": 2021, "autonomia": 395.6, "electrico": true },
+  { "marca": "Mercedes-Benz", "modelo": "EQC", "anio": 2022, "autonomia": 420.5, "electrico": true },
+  { "marca": "Honda", "modelo": "Civic", "anio": 2023, "autonomia": 790.8, "electrico": false },
+  { "marca": "Mazda", "modelo": "MX-30", "anio": 2022, "autonomia": 200.4, "electrico": true },
+  { "marca": "Volvo", "modelo": "XC40 Recharge", "anio": 2023, "autonomia": 418.9, "electrico": true },
+  { "marca": "Subaru", "modelo": "Solterra", "anio": 2024, "autonomia": 460.2, "electrico": true },
+  { "marca": "Porsche", "modelo": "Taycan", "anio": 2023, "autonomia": 504.8, "electrico": true },
+  { "marca": "Fiat", "modelo": "500e", "anio": 2022, "autonomia": 320.1, "electrico": true },
+  { "marca": "Seat", "modelo": "León", "anio": 2021, "autonomia": 720.7, "electrico": false }
+]

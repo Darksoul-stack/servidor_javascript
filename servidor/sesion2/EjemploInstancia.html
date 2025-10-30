@@ -1,0 +1,45 @@
+<script>
+function Usuario(nombre,apellido){
+  this.nombre=nombre;
+  this.apellido=apellido;
+  this.Hola=function(){
+    console.log("Hola");
+  }
+}
+
+let oUsuario= new Usuario('Jorge','Moreno');
+
+let oUsuarioJavi= new Usuario('Javi','Piñero');
+Usuario.prototype.saludar=function(){
+  console.log("Hola "+ this.nombre);
+}
+
+oUsuario.Hola();
+
+oUsuario.saludarApellido=function(){
+  console.log("Hola "+ this.apellido)
+}
+oUsuario.saludar();
+oUsuario.saludarApellido();
+//oUsuarioJavi.saludarApellido();
+
+let persona ={
+  saludar:function(){
+    console.log("Hola");
+  },
+  saludar2:function(){
+    console.log("Holo");
+  }
+}
+
+let personaCreate=Object.create(persona);
+
+persona.saludarTodos=function(){
+  console.log("Hola a todos")
+}
+
+personaCreate.saludar();
+personaCreate.saludar2();
+personaCreate.saludarTodos();
+
+</script>

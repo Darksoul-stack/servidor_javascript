@@ -1,0 +1,68 @@
+<<<<<<< HEAD
+<script>// let paises = {nombre:"paises",intervalo: 5000, pintar:function(){
+//     return true;
+// }
+// }
+
+
+//vamos a hacer un objeto q tenga un metodo que me pinte cada 5 segundos por consola el nomnbre del pais. la funcion no es settimeout perio es su prima
+
+// let paises = {
+//   nombre: "Colombia",
+//   intervalo: 5000,
+//   pintar: function() {
+//     // "setInterval" ejecuta una función cada cierto tiempo (su prima de setTimeout)
+//     setInterval(() => {
+//       console.log(this.nombre);
+//     }, this.intervalo);
+//   }
+// };
+
+// paises.pintar();
+
+
+
+=======
+
+    //vamos a hacer un objeto que tenga un metodo que me pinte cada 5 segundos por consola
+    //el nombre del pais 
+    //Nota la funcion no es setTimeout pero es su prima
+    let paises=[
+                {
+                    nombre:"España", 
+                    intervalo:5000,
+                    pintar:function(){
+                        this.nombre;
+                    }
+                },
+                {
+                    nombre:"Argentina", 
+                    intervalo:10000,
+                    pintar:function(){
+                        this.nombre;
+                    }
+                },
+                {
+                    nombre:"Alemania", 
+                    intervalo:2000,
+                    pintar:function(){
+                        this.nombre;
+                    }
+                },
+                {
+                    nombre:"Francia", 
+                    intervalo:3000,
+                    pintar:function(){
+                        this.nombre;
+                    }
+                }
+            ]
+    for (let pais of paises){
+        console.log("pais",pais);
+        setInterval(() => {
+            console.log("entra");
+            pais.pintar();
+        }, pais.intervalo);
+    }
+
+</script>
