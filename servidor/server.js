@@ -1,12 +1,16 @@
 // index.js
-//const express = require('express');
+//Express = el motor de tu servidor web.
+//expres sirve para usar funciones app.get('/', (req, res) => res.send('Hola!'));
 import express from 'express';
+// path sirve para trabajar con las rutas en donde tienes tus documentos /sesion2/sesion2.js
+//Path = el GPS que te dice dónde están tus archivos.
 import path from 'path';
 import * as sesion2 from './sesion2/sesion2.js';
 import * as ejemplos from './ejemplos.js';
 import * as ejemplos2 from './ejemplos2.js';
 import { pintarCoches } from './sesion2/electrico.js'; 
 import { fileURLToPath } from 'url'; 
+import {  } from "module";
 // const path = require('path');
 // const sesion2 = require('./sesion2/sesion2');
 // const ejemplos = require('./ejemplos');
