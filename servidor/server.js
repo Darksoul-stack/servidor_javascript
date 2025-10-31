@@ -18,9 +18,15 @@ import {  } from "module";
 // const coche = require('./sesion2/coche');
 
 
+// Creamos la app de Express
 const app = express();
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+
+// Estas dos líneas crean __dirname y __filename
+const __filename = fileURLToPath(import.meta.url); // ruta completa del archivo actual. por ejemplo todas la
+const __dirname = path.dirname(__filename);       // carpeta donde está este archivo__dirname apunta a la carpeta donde está ese server.js
+
+// función de Express (express.static) que sirve para mostrar archivos “estáticos” (HTML, CSS, JS, imágenes, etc.)
+//  join juntar rutas de forma segura tanto en linux o windows
 app.use(express.static(path.join(__dirname, '')));
 
 // Endpoint raíz
