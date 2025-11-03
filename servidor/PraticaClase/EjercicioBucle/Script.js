@@ -1,44 +1,98 @@
-import datos from './datos.json' with { type: 'json' };
+let Meses = [
+    {
+        nombre: 'Enero',
+        dias: 31
+    },
+    {
+        nombre: 'Febrero',
+        dias: 29
+    },
+    {
+        nombre: 'Marzo',
+        dias: 31
+    },
+    {
+        nombre: 'Abril',
+        dias: 30
+    },
+    {
+        nombre: 'Mayo',
+        dias: 31
+    },
+    {
+        nombre: 'Junio',
+        dias: 30
+    },
+    {
+        nombre: 'Julio',
+        dias: 31
+    },
+    {
+        nombre: 'Agosto',
+        dias: 31
+    },
+    {
+        nombre: 'Septiembre',
+        dias: 30
+    },
+    {
+        nombre: 'Octubre',
+        dias: 31
+    },
+    {
+        nombre: 'Noviembre',
+        dias: 30
+    },
+    {
+        nombre: 'Diciembre',
+        dias: 31
+    }];
 
-// Array con los días de la semana en castellano
-const diasSemana = [
-    "domingo",
-    "lunes",
-    "martes",
-    "miércoles",
-    "jueves",
-    "viernes",
-    "sábado"
-];
-
-export function diaDeLaSemana(fecha) {
-    // Obtener la fecha actual 'yyyy-MM-dd'
-    const fechaActual = new Date(fecha);
-
-    // Obtener el índice del día de la semana (0 es domingo, 6 es sábado)
-    const diaSemanaIndex = fechaActual.getDay();
-
-    // Obtener el nombre del día de la semana
-    const diaSemanaTexto = diasSemana[diaSemanaIndex];
-    return diaSemanaTexto;
+function sacarNumeroMes(mes) {
+    let sMes = "";
+    switch (mes) {
+        case "Enero": sMes = "01"; break;
+        case "Febrero": sMes = "02"; break;
+        case "Marzo": sMes = "03"; break;
+        case "Abril": sMes = "04"; break;
+        case "Mayo": sMes = "05"; break;
+        case "Junio": sMes = "06"; break;
+        case "Julio": sMes = "07"; break;
+        case "Agosto": sMes = "08"; break;
+        case "Septiembre": sMes = "09"; break;
+        case "Octubre": sMes = "10"; break;
+        case "Noviembre": sMes = "11"; break;
+        case "Diciembre": sMes = "12"; break;
+    }
+    return sMes;
 }
 
+const diasSemana = [
+    "domingo", "lunes", "martes", "miércoles", "jueves", "viernes", "sábado"
+];
+
+function diaDeLaSemana(fecha) {
+    const fechaActual = new Date(fecha);
+    const diaSemanaIndex = fechaActual.getDay();
+    return diasSemana[diaSemanaIndex];
+}
 
 const sAnio = "2025";
+
 //PASO 1 RECORREMOS LOS MESES Y LOS VAMOS PINTANDO
 export function pintar(){
     let anio=document.getElementById('anio').value;
-    
+    debugger;
 
     anio=anio!=null && anio!=''?anio:sAnio;
-for (let mes of datos) {
-    console.log("MES: ", mes[nombre]);
-    document.writeln("MES: <b>"+ mes[nombre]+"</b><br>");
+for (let mes of Meses) {
+    console.log("MES: ", mes.nombre);
+    document.writeln("MES: <b>"+ mes.nombre+"</b><br>");
     //PASO 2 DENTRO DEL BUCLE DE MESES CONSTRUIMOS UN BUCLE QUE ME RECORRA LOS DIAS DEL MES USANDO COMO TOPE EL CAMPO DIAS DEL OBJETO
-    for (let d = 1; d <= mes[dia]; d++) {
+    for (let d = 1; d <= mes.dias; d++) {
         //console.log("DIA: ", d);
         //PASO 3 DENTRO DEL BUCLE DE LOS DIAS LLAMAMOS A UNA FUNCION QUE A PARTIR DEL TEXTO DEL MES ME DEVUELVA EL NUMÉRICO DEL MES
-        let sMes = sacarNumeroMes(mes.nombre); // en casa iterrar los dias y que se vayan aumentando. y impriendo en pantalla 
+        let sMes = sacarNumeroMes(mes.nombre);
 
         //PASO 4 DENTRO DEL BUCLE DE LOS DIAS CONCATENAMOS AÑO NUMERO MES Y NUMERO DIA CON ESTE FORMATO 'yyyy-MM-dd'
         let sFecha = "";
@@ -63,5 +117,3 @@ for (let mes of datos) {
 }
 // 🔹 Exponer la función al HTML
 window.pintar = pintar;
-
-
