@@ -6,8 +6,8 @@ import express from 'express';
 //Path = el GPS que te dice dónde están tus archivos.
 import path from 'path';
 import * as sesion2 from './sesion2/sesion2.js';
-import * as ejemplos from './ejemplos.js';
-import * as ejemplos2 from './ejemplos2.js';
+import * as ejemplos from './EjemploClase/ejemplos.js';
+import * as ejemplos2 from './EjemploClase/ejemplos2.js';
 import { pintarCoches } from './sesion2/electrico.js'; 
 import { fileURLToPath } from 'url'; 
 import {  } from "module";
