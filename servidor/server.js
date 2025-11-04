@@ -95,8 +95,10 @@ app.get('/sesion2/ejercicioObjetos', (req, res) => {
 app.get('/PraticaClase/EjercicioBucle', (req, res) => {
   res.sendFile(path.join(__dirname, 'PraticaClase', 'EjercicioBucle', 'index.html'));
 });
-;
 
+app.get('/PraticaClase/EjercicioStarWars', (req, res) => {
+  res.sendFile(path.join(__dirname, 'PraticaClase', 'EjercicioStarWars', 'index.html'));
+});
 
 //-- SESION2
 
