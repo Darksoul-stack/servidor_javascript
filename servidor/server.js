@@ -100,6 +100,9 @@ app.get('/PraticaClase/EjercicioStarWars', (req, res) => {
   res.sendFile(path.join(__dirname, 'PraticaClase', 'EjercicioStarWars', 'index.html'));
 });
 
+app.get('/ProyectoI', (req, res) => {
+  res.sendFile(path.join(__dirname, 'ProyectoI', 'index.html'));
+});
 //-- SESION2
 
 

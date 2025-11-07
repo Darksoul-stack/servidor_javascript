@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <!-- type="module" permite usar import/export y hace que window funcione correctamente con módulos -->
+    <script type="module" src="script.js"></script>
+    <title>Gestión Colección Cómics</title>
+</head>
+
+<body>
+    <div id="principal">
+        <div id="cabecera">
+            <div>Título</div>
+            <div>Autor</div>
+            <div>Estado</div>
+            <div>Prestado</div>
+            <div>Localización</div>
+            <div>Acciones</div>
+        </div>
+
+        <!-- Fila para añadir un nuevo cómic -->
+        <div id="nuevaFila">
+            <input type="text" id="titulo0" placeholder="Título…" />
+            <input type="text" id="autor0" placeholder="Autor…" />
+
+            <select id="estado0">
+                <option value="pendiente">pendiente</option>
+                <option value="leyendo">leyendo</option>
+                <option value="leído">leído</option>
+            </select>
+
+            <input type="checkbox" id="prestar0" />
+
+            <select id="localizacion0">
+                <option value="estanteria1">Estantería 1</option>
+                <option value="estanteria2">Estantería 2</option>
+                <option value="mueble">Mueble</option>
+            </select>
+            <!-- acciones para el elemento visual de la interacicion con el usuario  -->
+
+            <div class="acciones">
+                 <!-- Botones con eventos onclick para ejecutar funciones de JavaScript -->
+                <input type="button" value="ADD" onclick="anadirComic();" />
+                <input type="button" value="MOSTRAR" onclick="listarComics();" />
+            </div>
+        </div>
+
+        <!-- Aquí se pintará la lista -->
+        <div id="lista"></div>
+    </div>
+</body>
+
+</html>

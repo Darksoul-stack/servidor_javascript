@@ -1,0 +1,195 @@
+/* ==========================================================
+   ESTILO MODERNO - GESTIÓN COLECCIÓN CÓMICS (ESPACIO VISUAL FIJO)
+   ========================================================== */
+
+:root {
+  --primary: #2563eb;
+  --primary-dark: #1e40af;
+  --success: #22c55e;
+  --success-dark: #15803d;
+  --info: #0ea5e9;
+  --info-dark: #0369a1;
+  --warning: #facc15;
+  --warning-dark: #ca8a04;
+  --danger: #ef4444;
+  --danger-dark: #b91c1c;
+  --bg: #f1f5f9;
+  --card-bg: #ffffff;
+  --text: #1e293b;
+  --border: #e2e8f0;
+  --radius: 14px;
+  --transition: 0.25s ease;
+  --cell-padding: 8px; /* ESPACIO INTERNO EN CADA CELDA */
+}
+
+body {
+  font-family: "Inter", "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+}
+
+/* === Contenedor principal === */
+#principal {
+  width: 95%;
+  max-width: 1200px;
+  margin: 40px 0;
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+  padding: 30px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+
+/* === Cabecera === */
+#cabecera {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1.2fr 0.8fr 1.2fr 1.2fr;
+  text-align: center;
+  font-weight: 600;
+  background: var(--primary);
+  color: #fff;
+  padding: 16px 0;
+  border-radius: var(--radius);
+  box-shadow: inset 0 -2px 0 rgba(255, 255, 255, 0.2);
+  letter-spacing: 0.4px;
+  font-size: 0.95rem;
+}
+
+/* === Filas === */
+#nuevaFila,
+.fila {
+  display: grid;
+  grid-template-columns: 2fr 1.5fr 1.2fr 0.8fr 1.2fr 1.2fr;
+  gap: 16px; /* Espacio entre celdas */
+  padding: 18px 20px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: #fff;
+  transition: var(--transition);
+  margin-bottom: 14px;
+}
+
+.fila:hover {
+  background: #f8fafc;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+/* === ENVOLVER CADA ELEMENTO EN ESPACIO BLANCO === */
+#nuevaFila > *,
+.fila > * {
+  padding: var(--cell-padding) !important;
+  box-sizing: border-box;
+}
+
+/* === Inputs y selects con padding interno y borde redondeado === */
+input[type="text"],
+select {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  font-size: 0.94rem;
+  background-color: #f9fafb;
+  transition: var(--transition);
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.04);
+}
+
+input[type="text"]:focus,
+select:focus {
+  border-color: var(--primary);
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  outline: none;
+}
+
+/* === Checkbox centrado === */
+input[type="checkbox"] {
+  transform: scale(1.35);
+  accent-color: var(--primary);
+  cursor: pointer;
+  margin: 0 auto;
+  display: block;
+}
+
+/* === Acciones (botones) === */
+.acciones {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: nowrap;
+}
+
+input[type="button"] {
+  border: none;
+  border-radius: 10px;
+  padding: 9px 16px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  letter-spacing: 0.3px;
+  transition: var(--transition);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  min-width: 58px;
+}
+
+input[type="button"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
+}
+
+input[type="button"]:active {
+  transform: scale(0.96);
+}
+
+/* === Colores de botones === */
+input[value="ADD"] { background: var(--success); }
+input[value="ADD"]:hover { background: var(--success-dark); }
+
+input[value="MOSTRAR"] {
+  background: var(--info);
+  font-size: 0.8rem;
+  padding: 9px 12px;
+}
+input[value="MOSTRAR"]:hover { background: var(--info-dark); }
+
+input[value="MOD"] {
+  background: var(--warning);
+  color: #1f2937;
+}
+input[value="MOD"]:hover {
+  background: var(--warning-dark);
+  color: #fff;
+}
+
+input[value="DEL"] { background: var(--danger); }
+input[value="DEL"]:hover { background: var(--danger-dark); }
+
+/* === Lista === */
+#lista {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* === Scroll === */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
