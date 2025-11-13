@@ -9,9 +9,9 @@ import path from 'path';
 import * as sesion2 from './sesion2/sesion2.js';
 import * as ejemplos from './EjemploClase/ejemplos.js';
 import * as ejemplos2 from './EjemploClase/ejemplos2.js';
-import { pintarCoches } from './sesion2/electrico.js'; 
-import { fileURLToPath } from 'url'; 
-import {  } from "module";
+import { pintarCoches } from './sesion2/electrico.js';
+import { fileURLToPath } from 'url';
+import { } from "module";
 // const path = require('path');
 // const sesion2 = require('./sesion2/sesion2');
 // const ejemplos = require('./ejemplos');
@@ -41,13 +41,13 @@ app.get('/', (req, res) => {
 
 
 app.get('/ejemplos', (req, res) => {
-  
+
   const resultado = ejemplos.ejemplo();
   res.send(`La variable pinta ${resultado}`);
 });
 
 app.get('/ejemplos2', (req, res) => {
-  
+
   const saludar = ejemplos2.saludarexp();
   const saludar2 = ejemplos2.despedirexp();
   res.send(`La variable pinta ${saludar} y ${saludar2}`);
@@ -56,20 +56,20 @@ app.get('/ejemplos2', (req, res) => {
 //++ SESION2 
 // Ejemplo: suma
 app.get('/variables', (req, res) => {
-  
+
   const resultado = sesion2.variables();
   res.send(`La variable pinta ${resultado}`);
 });
 
 // app.get('/concatenar', (req, res) => {
-  
+
 //   const resultado = sesion2.concatenar();
 //   res.send(true);
 // });
 
 app.get('/sesion2/coche', (req, res) => {
-  
-  const resultado=pintarCoches();
+
+  const resultado = pintarCoches();
   res.send(resultado);
 });
 
@@ -100,8 +100,8 @@ app.get('/PraticaClase/EjercicioStarWars', (req, res) => {
   res.sendFile(path.join(__dirname, 'PraticaClase', 'EjercicioStarWars', 'index.html'));
 });
 
-app.get('/ProyectoI', (req, res) => {
-  res.sendFile(path.join(__dirname, 'ProyectoI', 'index.html'));
+app.get('/sesion2/Gestion Comic/ProyectoI', (req, res) => {
+  res.sendFile(path.join(__dirname, 'sesion2', 'Gestion Comic', 'ProyectoI', 'index.html'));
 });
 //-- SESION2
 

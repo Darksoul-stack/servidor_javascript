@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <title>Gestion de Comics</title>
+    <script type="module" src="funciones.js"></script>
+    <link rel="stylesheet" href="estilos.css">
+
+</head>
+
+<body>
+
+    <div id="banner"></div>
+    <form id="frm" name="frm">
+        <div id="principal">
+            <div id="cabecera">
+                <div>Titulo</div>
+                <div>Autor</div>
+                <div>Estado</div>
+                <div>Prestado</div>
+                <div>Localización</div>
+                <div>Botonera</div>
+            </div>
+            <div id="filtro">
+                <div><input type="text" value="" id="filTitulo" name="filTitulo" onchange="filtrar()" /></div>
+                <div><input type="text" value="" id="filAutor" name="filAutor" onchange="filtrar()" /></div>
+                <div>
+                    <select id="filEstado" name="filEstado" onchange="filtrar()">
+                        <option value=""></option>
+                        <option value="pendiente de leer">pendiente
+                            de leer
+                        </option>
+                        <option value="leyendo">leyendo
+                        </option>
+                        <option value="leido">leído
+                        </option>
+                    </select>
+                </div>
+                <div><input type="checkbox" id="filPrestado" onchange="filtrar()" />
+                </div>
+                <div>
+                    <select id="filLocalizacion" name="filLocalizacion" onchange="filtrar()">
+                        <option value=""></option>
+                        <option value="Estanteria1">Estantería
+                            1
+                        </option>
+                        <option value="Estanteria2">Estantería
+                            2</option>
+                        <option value="Estanteria3">Estantería
+                            3
+                        </option>
+                    </select>
+                </div>
+                <input type="button" id="btnAnadir" onclick="anadirFila();" value="NUEVO" />
+            </div>
+            <div id="listado">
+
+            </div>
+        </div>
+    </form>
+</body>
+
+</html>
