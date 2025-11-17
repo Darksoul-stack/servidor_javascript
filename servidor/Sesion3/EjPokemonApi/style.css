@@ -1,0 +1,56 @@
+#contenedor {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center; /* para que se centren las cartas */
+  padding: 20px;
+  background: #f0f4f8; /* fondo claro suave */
+}
+
+.tarjeta {
+  width: 180px;
+  background: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+  border-radius: 15px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  color: #333;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.tarjeta:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+}
+
+.imagen {
+  background: white;
+  padding: 15px;
+  border-bottom: 2px solid #fda085;
+}
+
+.imagen img {
+  width: 100%;
+  height: auto;
+  display: block;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.15));
+}
+
+.titulo {
+  padding: 10px 15px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-transform: capitalize;
+}
+
+.titulo a {
+  color: #333;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.titulo a:hover {
+  color: #e63946;
+}
