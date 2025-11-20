@@ -43,7 +43,7 @@ async function datosPokemon() {
         console.log("dataPok", dataPok);
 
         // Obtenemos la URL de la imagen
-        let urlimagen = dataPok.sprites.front_default; 
+        let urlimagen = dataPok.sprites.front_default;
         // → dataPok es un objeto con todos los datos del Pokémon
         // → sprites es un objeto dentro de dataPok que contiene las imágenes
         // → front_default es la imagen frontal por defecto
@@ -51,7 +51,7 @@ async function datosPokemon() {
         if (urlimagen != null && urlimagen != undefined) {
             // Creamos el div que contendrá la imagen
             let divImg = document.createElement('div');
-            divImg.classList.add('ancho50');
+            divImg.classList.add('estiloImg');
 
             // Creamos la etiqueta img y añadimos sus atributos
             let img = document.createElement('img');
