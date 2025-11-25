@@ -1,152 +1,60 @@
-// ------------------------------
-// FUNCIONES DE PINTADO
-// ------------------------------
-async function creacionPersonajes() {
+// ========================================
+// funciones2.js - TABLA (listado.html)
+// ========================================
 
-    let oItems = await obtenerDatosDragonBall();
+// FUNCIÓN DE PINTADO (recibe datos como parámetro)
+function pintarTablaPersonajes(personajes) {
+    let divContenido = document.getElementById('contenido');
+    let table = document.createElement('table');
+    table.classList.add('tabla');
 
-    let divPersonajes =
-        document.getElementById('Container-principal') ||
-        document.getElementById('Container-personaje');
-
-    divPersonajes.classList.add('estiloPersonajes');
-
-    for (let res of oItems) {
-
-        let nombreDragonBall = res.name;
-        let urlimagen = res.image;
-
-        let divDragonBall = document.createElement('div');
-        divDragonBall.classList.add('dragonBall');
-
-        if (urlimagen) {
-
-            let divImg = document.createElement('div');
-            divImg.classList.add('estiloImg');
-
-            let img = document.createElement('img');
-            img.src = urlimagen;
-            img.alt = nombreDragonBall;
-            img.title = nombreDragonBall;
-
-            // RUTA AUTOMÁTICA SEGÚN CARPETA
-            img.addEventListener("click", () => {
-                localStorage.setItem("personajeSeleccionado", res.name);
-
-                let destino = window.location.pathname.includes("Listado")
-                    ? "../Personajes/personaje.html"
-                    : window.location.pathname.includes("Personajes")
-                        ? "personaje.html"
-                        : "Personajes/personaje.html";
-
-                window.location.href = destino;
-            });
-
-            divImg.appendChild(img);
-
-            let divTitle = document.createElement('div');
-            divTitle.innerText = nombreDragonBall;
-            divTitle.classList.add('nombre');
-
-            divDragonBall.appendChild(divImg);
-            divDragonBall.appendChild(divTitle);
+    // Crear encabezados
+    let tr_th = document.createElement('tr');
+    for (let prop in personajes[0]) {
+        if (prop != 'description') {
+            let th = document.createElement('th');
+            th.innerText = prop;
+            tr_th.appendChild(th);
         }
-
-        divPersonajes.appendChild(divDragonBall);
     }
+    table.appendChild(tr_th);
+
+    // Crear filas de datos
+    for (let res of personajes) {
+        let tr_td = document.createElement('tr');
+
+        for (let dat in res) {
+            if (dat != 'description') {
+                let td = document.createElement('td');
+
+                if (dat == 'name') {
+                    td.innerText = res[dat];
+                    td.style.cursor = 'pointer';
+                    td.style.color = '#0000FF';
+
+                    //  Al hacer click: guarda en localStorage y navega
+                    td.onclick = function () {
+                        localStorage.clear();
+                        localStorage.setItem('personaje', JSON.stringify(res));
+                        window.location.href = '../Personajes/personaje.html'; 
+                    };
+                } else {
+                    td.innerText = res[dat];
+                }
+
+                tr_td.appendChild(td);
+            }
+        }
+        table.appendChild(tr_td);
+    }
+
+    divContenido.appendChild(table);
 }
 
-// -----------------------------------------------------
-// TABLA DE LISTADO
-// -----------------------------------------------------
-async function tablaDragonBall() {
-
-    let datos = await obtenerDatosDragonBall();
-    let contenedor = document.getElementById("contenedor-tabla");
-
-    let tabla = document.createElement("table");
-    tabla.border = "1";
-
-    let thead = document.createElement("thead");
-    thead.innerHTML = `
-        <tr>
-            <th>Nombre</th>
-            <th>Raza</th>
-            <th>Género</th>
-        </tr>
-    `;
-    tabla.appendChild(thead);
-
-    let tbody = document.createElement("tbody");
-
-    for (let personaje of datos) {
-
-        let fila = document.createElement("tr");
-
-        let tdNombre = document.createElement("td");
-        tdNombre.innerText = personaje.name;
-        tdNombre.classList.add("clicable");
-
-        tdNombre.addEventListener("click", () => {
-            localStorage.setItem("personajeSeleccionado", personaje.name);
-            window.location.href = "../Personajes/personaje.html";
-        });
-
-        let tdRaza = document.createElement("td");
-        tdRaza.innerText = personaje.race;
-
-        let tdGenero = document.createElement("td");
-        tdGenero.innerText = personaje.gender;
-
-        fila.appendChild(tdNombre);
-        fila.appendChild(tdRaza);
-        fila.appendChild(tdGenero);
-
-        tbody.appendChild(fila);
-    }
-
-    tabla.appendChild(tbody);
-    contenedor.appendChild(tabla);
+// FUNCIÓN PRINCIPAL (obtiene datos y llama a pintar)
+async function inicializarTabla() {
+    let personajes = await obtenerDatosDragonBall();
+    pintarTablaPersonajes(personajes);
 }
 
-// -----------------------------------------------------
-// FICHA INDIVIDUAL
-// -----------------------------------------------------
-function mostrarPersonaje() {
-
-    let nombre = localStorage.getItem("personajeSeleccionado");
-    let datos = JSON.parse(localStorage.getItem(nombre));
-
-    let div = document.getElementById("Container-personaje");
-
-    div.innerHTML = `
-        <div id="contenedor-personaje">
-            <h2>${datos.name}</h2>
-            <img src="${datos.image}">
-            <p><strong>Raza:</strong> ${datos.race}</p>
-            <p><strong>Género:</strong> ${datos.gender}</p>
-            <p><strong>Ki:</strong> ${datos.ki}</p>
-            <p><strong>Max Ki:</strong> ${datos.maxKi}</p>
-
-            <button id="volver" onclick="window.history.back()">Volver</button>
-        </div>
-    `;
-}
-
-// ============================
-// AUTO-DETECCIÓN DE PÁGINA
-// ============================
-document.addEventListener("DOMContentLoaded", () => {
-
-    if (document.getElementById("Container-principal")) {
-        creacionPersonajes();
-    }
-
-    if (document.getElementById("contenedor-tabla")) {
-        tablaDragonBall();
-    }
-
-    if (document.getElementById("Container-personaje")) {
-        mostrarPersonaje();
-    }
-});
+inicializarTabla();

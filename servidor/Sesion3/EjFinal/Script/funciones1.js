@@ -1,37 +1,51 @@
-// ------------------------------
-// FUNCIONES DE DATOS (API + localStorage)
-// ------------------------------
+// ========================================
+// funciones1.js - GRID DE PERSONAJES (index.html)
+// ========================================
 
-// Llamada genérica a API
-async function llamadaAPI(url) {
-    let respuesta = await fetch(url);
-    let datos = await respuesta.json();
-    return datos;
-}
+// ✅ FUNCIÓN DE PINTADO (recibe datos como parámetro)
+function pintarGridPersonajes(personajes) {
+    let divContenido = document.getElementById('contenido');
 
-// Obtener solo los datos de Dragon Ball (NO dibuja)
-async function obtenerDatosDragonBall() {
-    const url = "https://dragonball-api.com/api/characters";
-
-    let data = await llamadaAPI(url);
-    console.log("data:", data);
-
-    let personajes = data.items;
-
-    // Guardar cada personaje en localStorage
     for (let res of personajes) {
-        let nombreDragonBall = res.name;
+        let nomPersonaje = res.name;
+        let desPersonaje = res.description;
+        let imgPersonaje = res.image;
 
-        localStorage.setItem(nombreDragonBall, JSON.stringify(res));
+        if (imgPersonaje != null && imgPersonaje != undefined) {
+            let divImg = document.createElement('div');
+            divImg.classList.add('ancho200');
 
-        let datosGuardados = JSON.parse(localStorage.getItem(nombreDragonBall));
-        console.log("Guardado:", datosGuardados);
+            let img = document.createElement('img');
+            img.src = imgPersonaje;
+            img.alt = nomPersonaje;
+            img.title = nomPersonaje;
+
+            // ⭐ Al hacer click: guarda en localStorage y navega
+            img.onclick = function () {
+                localStorage.clear();
+                localStorage.setItem('personaje', JSON.stringify(res));
+                window.location.href = 'Personajes/personaje.html'; // ✅ Ruta relativa desde index.html
+            };
+
+            divImg.appendChild(img);
+
+            let h1 = document.createElement('h1');
+            h1.innerText = nomPersonaje;
+            divImg.appendChild(h1);
+
+            let p = document.createElement('p');
+            p.innerText = desPersonaje;
+            divImg.appendChild(p);
+
+            divContenido.appendChild(divImg);
+        }
     }
-
-    // Muy importante: DEVOLVER los datos a funciones2.js
-    return personajes;
 }
 
+// ✅ FUNCIÓN PRINCIPAL (obtiene datos y llama a pintar)
+async function inicializarGrid() {
+    let personajes = await obtenerDatosDragonBall();
+    pintarGridPersonajes(personajes);
+}
 
-
-
+inicializarGrid();
