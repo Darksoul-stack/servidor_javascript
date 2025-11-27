@@ -1,0 +1,20 @@
+ .menu-casas {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin: 30px auto;
+        }
+
+        .casa-opcion {
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .casa-opcion img {
+            width: 130px;
+            transition: transform .3s;
+        }
+
+        .casa-opcion img:hover {
+            transform: scale(1.15);
+        }

@@ -1,59 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casas</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <title>Casas </title>
+
+    <script src="../Script/datos.js" defer></script>
+    <script src="../Script/funciones3.js" defer></script>
 </head>
 
-<body>
+<body class="index">
+    <div id="principal">
 
-    <body class="index">
-        <div id="principal">
-            <header>
-                <div id="Banner">
-                    <img src="" alt="banner de personajes">
-                </div>
-            </header>
+        <header>
+            <div id="Banner">
+                <img src="" alt="Banner de casas">
+            </div>
+        </header>
 
-            <nav id="menu">
-                <ul id="item">
-                    <li><a href="index.html">Casas</a></li>
-                    <li><a href="">Personajes</a></li>
-                    <li><a href="">Sin Casa</a></li>
-                </ul>
-            </nav>
+        <nav id="menu">
+            <ul id="item">
+                <li><a href="../index.html">Inicio</a></li>
+                <li><a href="../Casas/casas.html">Casas</a></li>
+            </ul>
+        </nav>
 
-            <main>
-                <div id="contenido-casas"></div>
-            </main>
-            <footer id="footer">
+        <!-- MENÚ DE CASAS -->
+        <div class="menu-casas">
+            <div class="casa-opcion" onclick="mostrarCasa('Gryffindor')">
+                <img src="../assets/gryffindor.png">
+                <p>Gryffindor</p>
+            </div>
 
-                <!-- ICONOS -->
-                <div id="ICONOS">
-                    <i class="fa-solid fa-hat-wizard" title="Magia"></i>
-                    <i class="fa-solid fa-landmark" title="Hogwarts"></i>
-                    <i class="fa-solid fa-film" title="Warner Bros"></i>
-                    <i class="fa-solid fa-book" title="J.K. Rowling"></i>
-                    <i class="fa-solid fa-wand-magic-sparkles" title="Hechicería"></i>
-                </div>
+            <div class="casa-opcion" onclick="mostrarCasa('Hufflepuff')">
+                <img src="../assets/hufflepuff.png">
+                <p>Hufflepuff</p>
+            </div>
 
-                <!-- TEXTO DEL FOOTER -->
-                <p id="TEXTO">
-                    Proyecto realizado con fines educativos.
-                    Los personajes, imágenes e información pertenecen al universo de
-                    <strong>Harry Potter</strong>, creado por <strong>J.K. Rowling</strong>.
-                    Los datos utilizados provienen de la API pública <strong>HP-API (hp-api.onrender.com)</strong>,
-                    bajo su propia licencia y uso libre para proyectos no comerciales.
-                    Este sitio no tiene relación oficial con Warner Bros., J.K. Rowling ni ningún propietario de la
-                    franquicia.
-                    Todo el código, diseño y estructura de esta página han sido elaborados exclusivamente para prácticas
-                    de desarrollo web.
-                </p>
+            <div class="casa-opcion" onclick="mostrarCasa('Ravenclaw')">
+                <img src="../assets/ravenclaw.png">
+                <p>Ravenclaw</p>
+            </div>
 
-            </footer>
-    </body>
+            <div class="casa-opcion" onclick="mostrarCasa('Slytherin')">
+                <img src="../assets/slytherin.png">
+                <p>Slytherin</p>
+            </div>
+
+            <div class="casa-opcion" onclick="mostrarCasa('SinCasa')">
+                <img src="../assets/sincasa.png">
+                <p>Sin casa</p>
+            </div>
+        </div>
+
+        <main>
+            <div id="contenido-casas"></div>
+        </main>
+
+        <footer id="footer">
+
+            <!-- ICONOS -->
+            <div id="ICONOS">
+                <i class="fa-solid fa-hat-wizard" title="Magia"></i>
+                <i class="fa-solid fa-landmark" title="Hogwarts"></i>
+                <i class="fa-solid fa-film" title="Warner Bros"></i>
+                <i class="fa-solid fa-book" title="J.K. Rowling"></i>
+                <i class="fa-solid fa-wand-magic-sparkles" title="Hechicería"></i>
+            </div>
+
+            <!-- TEXTO DEL FOOTER -->
+            <p id="TEXTO">
+                Proyecto realizado con fines educativos.
+                Los personajes, imágenes e información pertenecen al universo de
+                <strong>Harry Potter</strong>, creado por <strong>J.K. Rowling</strong>.
+                Los datos utilizados provienen de la API pública
+                <strong>HP-API (hp-api.onrender.com)</strong>, bajo su propia licencia
+                y uso libre para proyectos no comerciales.
+                Este sitio no tiene relación oficial con Warner Bros., J.K. Rowling
+                ni ningún propietario de la franquicia.
+                Todo el código, diseño y estructura de esta página han sido elaborados
+                exclusivamente para prácticas de desarrollo web.
+            </p>
+
+        </footer>
+
+    </div>
+</body>
 
 </html>

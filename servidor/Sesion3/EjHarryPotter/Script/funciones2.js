@@ -51,6 +51,9 @@ function pintarFichaPersonaje(personaje) {
     divContenido.appendChild(divImg);
 }
 
+
+
+
 //  FUNCIÓN PRINCIPAL (obtiene datos y llama a pintar)
 function inicializarFicha() {
     let personaje = obtenerPersonajeGuardado();
