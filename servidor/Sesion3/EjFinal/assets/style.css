@@ -34,12 +34,19 @@ body.index .ancho200 p {
 }
 
 /* BANNER */
+#Banner {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 20px 20px 0 0;
+}
+
 #Banner img {
   width: 100%;
-  height: 260px;
+  aspect-ratio: 16 / 5;
+  /* ajuste que evita que se rompa la estructura */
   object-fit: cover;
-  object-position: top;
-  border-radius: 20px 20px 0 0;
+  object-position: center;
+  display: block;
 }
 
 /* NAV */
@@ -76,7 +83,8 @@ nav a:hover {
 
 /* MAIN */
 main {
-  display: block; /* porque quitamos aside */
+  display: block;
+  /* porque quitamos aside */
   margin-top: 10px;
 }
 
@@ -149,32 +157,53 @@ main {
   line-height: 1.5;
 }
 
-/* TABLA (listado) */
+/* TABLA (listado) – versión mejorada */
 table.tabla {
   width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  background: white;
-  border-radius: 12px;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin-top: 25px;
+  background: #ffffff;
+  border-radius: 14px;
   overflow: hidden;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+  font-size: 0.95rem;
 }
 
+/* Encabezados */
 table.tabla th {
-  background: #cdd8ff;
-  padding: 12px;
-  font-weight: bold;
+  background: linear-gradient(90deg, #bfcaff, #d7e0ff);
+  padding: 14px;
+  font-weight: 600;
+  text-transform: capitalize;
+  color: #222;
+  letter-spacing: 0.4px;
 }
 
+/* Celdas */
 table.tabla td {
-  padding: 10px;
-  border-bottom: 1px solid #eee;
-  text-align: center;
+  padding: 12px;
+  border-bottom: 1px solid #eef0f6;
+  color: #444;
 }
 
+/* Hover fila */
 table.tabla tr:hover {
-  background: #eef2ff;
+  background: #f2f5ff;
+  transition: 0.2s ease-in-out;
 }
+
+/* Quitar última línea inferior */
+table.tabla tr:last-child td {
+  border-bottom: none;
+}
+
+/* OCULTAR AUTOMÁTICAMENTE columnas completamente vacías */
+table.tabla td:empty,
+table.tabla th:empty {
+  display: none;
+}
+
 
 /* FOOTER */
 footer {

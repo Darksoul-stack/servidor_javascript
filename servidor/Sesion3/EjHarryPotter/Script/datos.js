@@ -1,6 +1,3 @@
-//===================================
-// funciones solo para obtener datos 
-//===================================
 
 // Función genérica para llamar a cualquier API
 async function llamadaAPI(url) {
@@ -10,11 +7,11 @@ async function llamadaAPI(url) {
 }
 
 // Función específica para obtener personajes de Dragon Ball
-async function obtenerDatosDragonBall() {
-    const url = "https://dragonball-api.com/api/characters";
+async function obtenerDatosHarryPotter() {
+    const url = "https://hp-api.onrender.com/api/characters";
     let data = await llamadaAPI(url);
     console.log(" Datos obtenidos:", data);
-    return data.items; // Devuelve solo el array de personajes
+    return data; // Devuelve solo el array de personajes
 }
 
 // Función para obtener personaje desde localStorage
@@ -26,3 +23,6 @@ function obtenerPersonajeGuardado() {
     }
     return JSON.parse(sres);
 }
+
+//ver los datos de HarryPotter
+obtenerDatosHarryPotter();
