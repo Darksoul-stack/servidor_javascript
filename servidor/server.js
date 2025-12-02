@@ -11,20 +11,19 @@ import * as ejemplos from './EjemploClase/ejemplos.js';
 import * as ejemplos2 from './EjemploClase/ejemplos2.js';
 import { pintarCoches } from './sesion2/electrico.js';
 import { fileURLToPath } from 'url';
-import { } from "module";
+import {} from 'module';
 // const path = require('path');
 // const sesion2 = require('./sesion2/sesion2');
 // const ejemplos = require('./ejemplos');
 // const ejemplos2 = require('./ejemplos2');
 // const coche = require('./sesion2/coche');
 
-
 // Creamos la app de Express
 const app = express();
 
 // Estas dos líneas crean __dirname y __filename
 const __filename = fileURLToPath(import.meta.url); // ruta completa del archivo actual. por ejemplo todas la url
-const __dirname = path.dirname(__filename);       // carpeta donde está este archivo__dirname apunta a la carpeta donde está ese server.js
+const __dirname = path.dirname(__filename); // carpeta donde está este archivo__dirname apunta a la carpeta donde está ese server.js
 
 // función de Express (express.static) que sirve para mostrar archivos “estáticos” (HTML, CSS, JS, imágenes, etc.)
 //  join juntar rutas de forma segura tanto en linux o windows
@@ -39,24 +38,20 @@ app.get('/', (req, res) => {
 //   res.sendFile(path.join(__dirname, '', 'index.html'));
 // });
 
-
 app.get('/ejemplos', (req, res) => {
-
   const resultado = ejemplos.ejemplo();
   res.send(`La variable pinta ${resultado}`);
 });
 
 app.get('/ejemplos2', (req, res) => {
-
   const saludar = ejemplos2.saludarexp();
   const saludar2 = ejemplos2.despedirexp();
   res.send(`La variable pinta ${saludar} y ${saludar2}`);
 });
 
-//++ SESION2 
+//++ SESION2
 // Ejemplo: suma
 app.get('/variables', (req, res) => {
-
   const resultado = sesion2.variables();
   res.send(`La variable pinta ${resultado}`);
 });
@@ -68,7 +63,6 @@ app.get('/variables', (req, res) => {
 // });
 
 app.get('/sesion2/coche', (req, res) => {
-
   const resultado = pintarCoches();
   res.send(resultado);
 });
@@ -89,23 +83,48 @@ app.get('/sesion2/ejercicioObjetos', (req, res) => {
   res.sendFile(path.join(__dirname, 'sesion2', 'ejercicioObjetos.html'));
 });
 
-
-
-
 app.get('/PraticaClase/EjercicioBucle', (req, res) => {
-  res.sendFile(path.join(__dirname, 'PraticaClase', 'EjercicioBucle', 'index.html'));
+  res.sendFile(
+    path.join(__dirname, 'PraticaClase', 'EjercicioBucle', 'index.html')
+  );
 });
 
 app.get('/PraticaClase/EjercicioStarWars', (req, res) => {
-  res.sendFile(path.join(__dirname, 'PraticaClase', 'EjercicioStarWars', 'index.html'));
+  res.sendFile(
+    path.join(__dirname, 'PraticaClase', 'EjercicioStarWars', 'index.html')
+  );
 });
 
 app.get('/sesion2/Gestion Comic/ProyectoI', (req, res) => {
-  res.sendFile(path.join(__dirname, 'sesion2', 'Gestion Comic', 'ProyectoI', 'index.html'));
+  res.sendFile(
+    path.join(__dirname, 'sesion2', 'Gestion Comic', 'ProyectoI', 'index.html')
+  );
 });
 //-- SESION2
 
+//++ SESION3
+app.get('/Sesion3/EjHarryPotter/', (req, res) => {
+  res.sendFile(path.join(__dirname, 'Sesion3', 'EjHarryPotter', 'index.html'));
+});
 
+app.get('/Sesion3/EjHarryPotter/Personajes', (req, res) => {
+  res.sendFile(
+    path.join(
+      __dirname,
+      'Sesion3',
+      'EjHarryPotter',
+      'Personajes',
+      'personaje.html'
+    )
+  );
+});
+app.get('/Sesion3/EjHarryPotter/Casas', (req, res) => {
+  res.sendFile(
+    path.join(__dirname, 'Sesion3', 'EjHarryPotter', 'Casas', 'casa.html')
+  );
+});
+
+//-- SESION3
 
 // Arrancamos el servidor
 app.listen(3000, () => {

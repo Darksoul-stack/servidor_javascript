@@ -2,7 +2,6 @@
 // FUNCIONES PARA HARRY POTTER API
 //===================================
 
-
 // FUNCIÓN 1: llamadaAPI(url)
 // ---------------------------
 // ¿Qué hace?
@@ -17,11 +16,10 @@
 // RESUMEN: Función reutilizable que pide datos a cualquier URL y los devuelve en JSON
 
 async function llamadaAPI(url) {
-    let cuerpo_respuesta = await fetch(url);  // Hace la petición y espera la respuesta
-    let datos = await cuerpo_respuesta.json();  // Convierte la respuesta a JSON
-    return datos;  // Devuelve los datos obtenidos
+  let cuerpo_respuesta = await fetch(url); // Hace la petición y espera la respuesta
+  let datos = await cuerpo_respuesta.json(); // Convierte la respuesta a JSON
+  return datos; // Devuelve los datos obtenidos
 }
-
 
 // FUNCIÓN 2: obtenerDatosHarryPotter()
 // -------------------------------------
@@ -38,14 +36,13 @@ async function llamadaAPI(url) {
 //       NO un objeto con propiedades como {items: [...]}
 
 async function obtenerDatosHarryPotter() {
-    const url = "https://hp-api.onrender.com/api/characters";  // URL de la API de Harry Potter
-    
-    let data = await llamadaAPI(url);  // Llama a la función genérica y espera los datos
-    console.log(" Datos obtenidos:", data);  // Muestra en consola qué llegó
-    
-    return data;  // Devuelve el array COMPLETO de personajes (no data.items)
-}
+  const url = 'https://hp-api.onrender.com/api/characters'; // URL de la API de Harry Potter
 
+  let data = await llamadaAPI(url); // Llama a la función genérica y espera los datos
+  console.log(' Datos obtenidos:', data); // Muestra en consola qué llegó
+
+  return data; // Devuelve el array COMPLETO de personajes (no data.items)
+}
 
 // FUNCIÓN 3: obtenerPersonajeGuardado()
 // --------------------------------------
@@ -60,24 +57,22 @@ async function obtenerDatosHarryPotter() {
 //          Si no hay nada guardado, devuelve null
 
 function obtenerPersonajeGuardado() {
-    let sres = localStorage.getItem('personaje');  // Intenta obtener el dato guardado
-    
-    // VALIDACIÓN: Verifica si existe el dato
-    if (!sres) {
-        console.error(" No hay personaje guardado en localStorage");
-        return null;  // Devuelve null si no hay nada guardado
-    }
-    
-    return JSON.parse(sres);  // Convierte el TEXTO a OBJETO y lo devuelve
-}
+  let sres = localStorage.getItem('personaje'); // Intenta obtener el dato guardado
 
+  // VALIDACIÓN: Verifica si existe el dato
+  if (!sres) {
+    console.error(' No hay personaje guardado en localStorage');
+    return null; // Devuelve null si no hay nada guardado
+  }
+
+  return JSON.parse(sres); // Convierte el TEXTO a OBJETO y lo devuelve
+}
 
 // EJECUTAR la función para ver los datos de Harry Potter
 // -------------------------------------------------------
 // Esto hace una llamada a la API al cargar el archivo
 // Los datos se mostrarán en la consola del navegador (F12 → Console)
 obtenerDatosHarryPotter();
-
 
 //===================================
 // CONCEPTOS CLAVE:
@@ -92,7 +87,6 @@ obtenerDatosHarryPotter();
 // - console.log() → Muestra información en la consola (para depurar)
 // - console.error() → Muestra errores en la consola
 
-
 //===================================
 // DIFERENCIA IMPORTANTE CON DRAGON BALL:
 //===================================
@@ -105,7 +99,6 @@ obtenerDatosHarryPotter();
 // - Por eso usamos: return data (el array completo)
 //
 // AMBAS SON VÁLIDAS, depende de cómo esté estructurada cada API
-
 
 //===================================
 // PARA QUÉ SIRVE ESTE ARCHIVO:
