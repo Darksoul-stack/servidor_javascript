@@ -1,40 +1,47 @@
-class Personajes {
-  constructor(objeto) {
-    this.name = objeto.name;
-    this.eye_color = objeto.eye_color;
-    this.gender = objeto.gender;
-    this.vehicles = objeto.vehicles;
-    this.starships = objeto.starships;
+// creamos una clase personaje
+class PersonajeSW {
+  constructor(datos) {
+    this.name = datos.name;
+    this.vehicles = datos.vehicles;
+    this.starships = datos.starships;
   }
-
-  async pintarconsola() {
-    console.log(
-      `Nombre: ${this.name}, Ojos: ${this.eye_color}, Género: ${this.gender}`
-    );
-
-    for (let vehiculoURL of this.vehicles) {
-      const vehiculo = await llamadaAPI(vehiculoURL);
-      console.log(` Vehículo: ${vehiculo.name}`);
+  // funcion par
+  async haPilotado() {
+    // Combina los arrays de vehículos y naves en un solo array llamado arrTotal
+    const arrTotal = this.vehicles.concat(this.starships);
+    // Comprueba los dos arrays para saber si hay naves.
+    if (arrTotal.length === 0) {
+      return `${this.name} no ha conducido ningún vehículo ni nave`;
+    }
+    // inicializamos un array vacio
+    let modelos = [];
+    // recorremos los dos arrays
+    for (let url of arrTotal) {
+      // guardamos en una variable la llamada a una api
+      const datos = await llamadaAPI(url);
+      // Si existen los datos y tienen la propiedad model
+      if (datos && datos.model) {
+        //  añadimos  el modelo al array de modelos
+        modelos.push(datos.model);
+      }
     }
 
-    for (let naveURL of this.starships) {
-      const nave = await llamadaAPI(naveURL);
-      console.log(` Starship: ${nave.name}`);
-    }
-  }
-
-  async inicializarPintarconsola() {
-    const personajesDatos = await obtenerDatosStarwars();
-    this.personajesObjetos = personajesDatos.map(
-      (dato) => new Personajes(dato)
-    );
-
-    for (let personaje of this.personajesObjetos) {
-      await personaje.pintarconsola();
-    }
+    return `${this.name} se montó en: ${modelos.join(', ')}`;
   }
 }
 
-// Uso:
-const app = new Personajes({});
-app.inicializarPintarconsola();
+// funcionar para iniciar por consola (no hace falta )
+async function iniciarApp() {
+  // guardamos en una variable los datos obtenidos
+  const datos = await obtenerDatosStarwars();
+  // Recorre los datos de personajes
+  for (let personajeData of datos) {
+    // creamos un objeto
+    const personaje = new PersonajeSW(personajeData);
+    // utiliza un metodo de la clase personaje
+    const resultado = await personaje.haPilotado();
+    console.log(resultado);
+  }
+}
+
+// iniciarApp();

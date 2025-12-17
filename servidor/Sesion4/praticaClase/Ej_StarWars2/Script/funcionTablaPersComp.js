@@ -1,71 +1,67 @@
-class Peliculas {
+class TablaPersonajes {
   constructor(objeto) {
     this.name = objeto.name;
-    this.eye_color = objeto.eye_color;
-    this.gender = objeto.gender;
-    this.films = objeto.films; // array de URLs de películas
+    this.vehicles = objeto.vehicles;
+    this.starships = objeto.starships;
   }
-
-  async pintarTablaPersonaje() {
+  // funcion para pintar personajes
+  async pintarTablaPersonajes(personajes) {
+    // Obtiene del DOM el elemento con id tabla-episodios y lo guarda en la variable contenedor
     const contenedor = document.getElementById('tabla-episodios');
+    // Vacía todo el contenido HTML del elemento contenedor
     contenedor.innerHTML = '';
-
-    if (!this.films || this.films.length === 0) {
-      contenedor.innerHTML = '<p>Este personaje no aparece en películas.</p>';
-      return;
-    }
-
-    // Creamos la tabla
+    // creamos una etiqueta tabla
     const table = document.createElement('table');
-    table.innerHTML = `<tr><th>Personaje</th><th>Elenco compartido</th></tr>`;
+    table.border = '1';
+    // Creamos una tabla con sus propiedades
+    table.innerHTML = `
+    <tr>
+      <th>Personaje</th>
+      <th>Vehículos / Naves pilotadas</th>
+    </tr>
+  `;
+    // recorremos personajes
+    for (let personaje of personajes) {
+      // Combina los arrays de vehículos y naves del personaje en un solo array
+      const arrTotal = personaje.vehicles.concat(personaje.starships);
 
-    // Set para nombres únicos
-    const elencoTotal = new Set();
-
-    // Recorremos cada película
-    for (let filmURL of this.films) {
-      const filmData = await llamadaAPI(filmURL);
-
-      // Recorremos los personajes de la película
-      for (let charURL of filmData.characters) {
-        const charData = await llamadaAPI(charURL);
-        if (charData.name !== this.name) {
-          elencoTotal.add(charData.name); // no repetimos ni incluimos al personaje principal
+      let textoFinal = 'No ha pilotado ningún vehículo ni nave';
+      // comprueba si hay vehiculos y naves
+      if (arrTotal.length > 0) {
+        // inicializamos un array vacio
+        let modelos = [];
+        // Recorre cada URL del array
+        for (let url of arrTotal) {
+          // obtiene los datos de la API
+          const datos = await llamadaAPI(url);
+          //si tienen modelo lo añade al array de modelos
+          if (datos && datos.model) {
+            modelos.push(datos.model);
+          }
         }
+
+        textoFinal = modelos.join(', ');
       }
-    }
-
-    // Creamos la fila para el personaje
-    const tr = document.createElement('tr');
-    tr.innerHTML = `
-      <td>${this.name}</td>
-      <td>${[...elencoTotal].join(', ')}</td>
+      // Crea una fila de tabla con el nombre del personaje y su texto de vehículos/naves pilotadas
+      const tr = document.createElement('tr');
+      tr.innerHTML = `
+      <td>${personaje.name}</td>
+      <td>${textoFinal}</td>
     `;
-    table.appendChild(tr);
-
+      // Añade la fila creada como hijo del elemento table
+      table.appendChild(tr);
+    }
+    //Añade  al elemento  padre la tabla
     contenedor.appendChild(table);
   }
-
+  // Obtiene los datos de personajes de Star Wars y luego los pinta en una tabla
   async inicializarTabla() {
-    // Si no tiene datos, los obtiene de la API
-    if (!this.films) {
-      if (typeof obtenerDatosStarwars !== 'function') {
-        console.error('La función obtenerDatosStarwars no está definida.');
-        return;
-      }
-
-      const personajes = await obtenerDatosStarwars();
-      const personajeData = personajes[0]; // ejemplo: primer personaje
-      this.name = personajeData.name;
-      this.eye_color = personajeData.eye_color;
-      this.gender = personajeData.gender;
-      this.films = personajeData.films;
-    }
-
-    await this.pintarTablaPersonaje();
+    const personajes = await obtenerDatosStarwars();
+    await this.pintarTablaPersonajes(personajes);
   }
 }
 
-// USO
-const peliculasApp = new Peliculas({});
-peliculasApp.inicializarTabla();
+// Crea una instancia de TablaPersonajes
+const tablaApp = new TablaPersonajes({});
+//inicia la carga y visualización de la tabla
+tablaApp.inicializarTabla();
