@@ -5,7 +5,7 @@ class PersonajeSW {
     this.vehicles = datos.vehicles;
     this.starships = datos.starships;
   }
-  // funcion par
+  // funcion para saber que personaje ha pilotado dicha nave
   async haPilotado() {
     // Combina los arrays de vehículos y naves en un solo array llamado arrTotal
     const arrTotal = this.vehicles.concat(this.starships);
