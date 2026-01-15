@@ -7,5 +7,8 @@ import { Component } from '@angular/core';
   styleUrl: './componente1.scss',
 })
 export class Componente1 {
-
+  mensaje(m: String) {
+    let y = 'hola pendejos';
+    return y;
+  }
 }
