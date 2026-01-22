@@ -1,0 +1,14 @@
+<h2>Personajes de Harry Potter</h2>
+
+<div class="cards-container">
+  <div *ngFor="let p of personajes" 
+       class="card"
+       [ngClass]="p.gender === 'male' ? 'male' : 'female'">
+       
+    <img [src]="p.image" alt="{{ p.name }}" class="card-image">
+    <h3>{{ p.name }}</h3>
+    <p>Género: {{ p.gender }}</p>
+  </div>
+</div>
+
+

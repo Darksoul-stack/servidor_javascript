@@ -1,0 +1,29 @@
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.card {
+  width: 200px;
+  padding: 1rem;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card img.card-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 0.5rem;
+}
+
+.male {
+  background-color: rgba(0, 128, 0, 0.3);
+}
+
+.female {
+  background-color: rgba(128, 0, 0, 0.3);
+}
