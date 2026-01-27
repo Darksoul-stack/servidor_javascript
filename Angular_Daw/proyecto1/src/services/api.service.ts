@@ -3,11 +3,10 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ApiService {
-
-  private apiUrl = 'https://hp-api.onrender.com/api/characters'; // ejemplo
+  public apiUrl: string = ' '; // ejemplo
 
   constructor(private http: HttpClient) {}
 
