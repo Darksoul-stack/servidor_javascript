@@ -1,1 +1,34 @@
-<p>padre works!</p>
+<app-hijo
+  [datos]="resultados"
+  (enviarPersonajes)="pintarCard($event)">
+</app-hijo>
+
+<div class="contenedor-cards">
+  <div class="card-pokemon" *ngFor="let p of arrPersonajes">
+    
+    <!-- Nombre y PS -->
+    <div class="card-header">
+      <span class="nombre">{{ p.name | titlecase }}</span>
+      <span class="ps">PS 100</span>
+    </div>
+
+    <!-- Imagen -->
+    <div class="img-container">
+      <img [src]="p.image" [alt]="p.name" />
+    </div>
+
+    <!-- Efectos -->
+    <div class="efectos">
+      <div class="efecto" *ngFor="let e of p.effect">
+        <p class="short">{{ e.short_effect }}</p>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="card-footer">
+      <span class="tipo">Grass</span>
+      <span class="debilidad">x2</span>
+    </div>
+
+  </div>
+</div>

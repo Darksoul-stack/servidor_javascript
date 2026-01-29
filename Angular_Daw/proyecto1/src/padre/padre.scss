@@ -1,0 +1,113 @@
+// Paleta de colores ajustada
+$color-agua: #5090d6; // Azul característico tipo agua
+$borde-oro: #d4af37; // Dorado metálico para el borde EX
+$fondo-recuadro: #ffffff; // El recuadro blanco que pediste
+$texto-oscuro: #222222; // Texto casi negro para máximo contraste
+$app-bg: #ffffff; // Fondo de la web blanco
+
+.contenedor-cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+  padding: 40px;
+  background: $app-bg;
+}
+
+.card-pokemon {
+  width: 290px;
+  height: 410px;
+  border-radius: 18px;
+  border: 8px solid $borde-oro;
+  background: $color-agua; // Cambiado a Azul
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+  font-family: 'Arial', sans-serif;
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 18px;
+
+    .nombre {
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: #fff; // Blanco sobre azul queda mejor
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+
+      span {
+        color: $borde-oro;
+        font-style: italic;
+        margin-left: 5px;
+        font-size: 1rem;
+      }
+    }
+
+    .ps {
+      font-weight: 900;
+      font-size: 1.1rem;
+      color: #fff;
+    }
+  }
+
+  .img-container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 5px;
+
+    img {
+      max-height: 150px;
+      object-fit: contain;
+      filter: drop-shadow(0 10px 12px rgba(0, 0, 0, 0.25));
+    }
+  }
+
+  // EL RECUADRO BLANCO (Aquí están las letras)
+  .efectos {
+    background: $fondo-recuadro; // Recuadro blanco puro
+    margin: 0 12px 12px 12px; // Separado de los bordes para que se vea el azul
+    padding: 15px;
+    border-radius: 10px; // Bordes redondeados internos
+    min-height: 140px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-shadow: inset 0 0 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+
+    .efecto {
+      color: $texto-oscuro; // Letras oscuras sobre fondo blanco
+      font-size: 0.85rem;
+      line-height: 1.4;
+      font-weight: 500;
+      margin-bottom: 10px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      // Pequeño indicador del ataque
+      &::before {
+        content: '•';
+        color: $color-agua;
+        font-weight: bold;
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .card-footer {
+    padding: 5px 15px 10px;
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.65rem;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.8);
+  }
+}
